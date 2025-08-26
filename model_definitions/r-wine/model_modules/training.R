@@ -12,15 +12,20 @@ train <- function(data_conf, model_conf, ...) {
     # Connect to Vantage
     con <- aoa_create_context()
 
+	print (" ...... Before setting the connection ")
+
     table <- tbl(con, sql(data_conf$sql))
 
 	#print data_conf$featureNames 
-	#print (" ...... Next parameter ")
+	print (" ...... After setting the connection ")
 	#print data_conf$targetNames 
 	
     # Create dataframe from tibble, selecting the necessary columns and mutating integer64 to integers
     # select both the feature and target columns (ignorning e.g. entity key)
     columns <- unlist(c(data_conf$featureNames, data_conf$targetNames), use.name = TRUE)
+
+	print (" ...... After setting the columns ")
+	print (" ...... Before getting the data ")
 	
     data <- table %>% select(all_of(columns)) %>% mutate(
                        YearId = as.integer(YearId),
@@ -31,6 +36,8 @@ train <- function(data_conf, model_conf, ...) {
 					   FrancePop = as.integer(FrancePop),
 					   Price = as.integer(Price)) %>% as.data.frame()
 
+	print (" ...... After getting the data ")
+	
     # Load hyperparameters from model configuration
     hyperparams <- model_conf[["hyperParameters"]]
 
