@@ -73,5 +73,5 @@ score.batch <- function(data_conf, model_conf, model_version, job_id, ...) {
 
 initialise_model <- function() {
     print("Loading model...")
-    model <- readRDS("artifacts/input/model.rds")
+    model <- readRDS("artifacts/model_wine_lm.rds")
 }
