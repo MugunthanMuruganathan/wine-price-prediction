@@ -18,7 +18,7 @@ train <- function(data_conf, model_conf, ...) {
     # select both the feature and target columns (ignorning e.g. entity key)
     columns <- unlist(c(data_conf$featureNames, data_conf$targetNames), use.name = TRUE)
     data <- table %>% select(all_of(columns)) %>% mutate(
-                       Year = as.integer(Year),
+                       YearId = as.integer(YearId),
                        Price = as.integer(Price),
                        WinterRain = as.integer(WinterRain),
                        AGST = as.integer(AGST),
