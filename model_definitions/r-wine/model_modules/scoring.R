@@ -47,9 +47,13 @@ score.batch <- function(data_conf, model_conf, model_version, job_id, ...) {
 
     # create result dataframe and store in Teradata Vantage
     pred_df <- as.data.frame(unlist(predicted_price))
+	print("Data Frame is created  1...")
     colnames(pred_df) <- c("Price")
+	print("Data Frame is created  2...")
     pred_df$YearId <- data$YearId
+	print("Data Frame is created  3...")
     pred_df$job_id <- job_id
+	print("Data Frame is created  4...")
 
 	print("Data Frame is created...")
 
