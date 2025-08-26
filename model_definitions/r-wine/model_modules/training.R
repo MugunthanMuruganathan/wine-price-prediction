@@ -19,12 +19,12 @@ train <- function(data_conf, model_conf, ...) {
     columns <- unlist(c(data_conf$featureNames, data_conf$targetNames), use.name = TRUE)
     data <- table %>% select(all_of(columns)) %>% mutate(
                        YearId = as.integer(YearId),
-                       Price = as.integer(Price),
                        WinterRain = as.integer(WinterRain),
                        AGST = as.integer(AGST),
                        HarvestRain = as.integer(HarvestRain),
 					   Age = as.integer(Age),
-					   FrancePop = as.integer(FrancePop)) %>% as.data.frame()
+					   FrancePop = as.integer(FrancePop),
+					   Price = as.integer(Price)) %>% as.data.frame()
 
     # Load hyperparameters from model configuration
     hyperparams <- model_conf[["hyperParameters"]]
