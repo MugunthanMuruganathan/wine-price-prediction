@@ -50,5 +50,5 @@ evaluate <- function(data_conf, model_conf, ...) {
 #  metrics <- cm$overall
   metrics <- SSE
 
-  write(jsonlite::toJSON(metrics, auto_unbox = TRUE, null = "null", keep_vec_names=TRUE), "artifacts/output/metrics.json")
+  #write(jsonlite::toJSON(metrics, auto_unbox = TRUE, null = "null", keep_vec_names=TRUE), "artifacts/output/metrics.json")
 }
