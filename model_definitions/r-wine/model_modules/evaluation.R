@@ -21,24 +21,31 @@ evaluate <- function(data_conf, model_conf, ...) {
   table <- tbl(con, sql(data_conf$sql))
 
     # Create dataframe from tibble, selecting the necessary columns and mutating integer64 to integers
-  data <- table %>% mutate(NumTimesPrg = as.integer(NumTimesPrg),
-                                PlGlcConc = as.integer(PlGlcConc),
-                                BloodP = as.integer(BloodP),
-                                SkinThick = as.integer(SkinThick),
-                                TwoHourSerIns = as.integer(TwoHourSerIns),
-                                HasDiabetes = as.integer(HasDiabetes)) %>% as.data.frame()
+  data <- table %>% mutate(
+					   WinterRain = as.integer(WinterRain),
+                       AGST = as.integer(AGST),
+                       HarvestRain = as.integer(HarvestRain),
+					   Age = as.integer(Age),
+					   FrancePop = as.integer(FrancePop),
+					   Price = as.integer(Price)) %>% as.data.frame()
 
-  probs <- predict(model, data, na.action = na.pass, type = "response")
-  preds <- as.integer(ifelse(probs > 0.5, 1, 0))
+  predicted_price <- predict(model, newdata=data)
+  #preds <- as.integer(ifelse(probs > 0.5, 1, 0))
 
-  cm <- confusionMatrix(table(preds, data$HasDiabetes))
+  #cm <- confusionMatrix(table(preds, data$HasDiabetes))
+  
+  SSE = sum(predicted_price$residuals^2)
+  
+  print ("The SSE value is ")
+  
+  print (SSE)
 
-  png("artifacts/output/confusion_matrix.png", width = 860, height = 860)
-  fourfoldplot(cm$table)
-  dev.off()
+#  png("artifacts/output/confusion_matrix.png", width = 860, height = 860)
+#  fourfoldplot(cm$table)
+#  dev.off()
 
-  preds$pred <- preds
-  metrics <- cm$overall
+#  preds$pred <- preds
+#  metrics <- cm$overall
 
   write(jsonlite::toJSON(metrics, auto_unbox = TRUE, null = "null", keep_vec_names=TRUE), "artifacts/output/metrics.json")
 }
