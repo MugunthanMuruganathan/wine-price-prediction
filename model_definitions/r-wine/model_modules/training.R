@@ -17,6 +17,7 @@ train <- function(data_conf, model_conf, ...) {
     # Create dataframe from tibble, selecting the necessary columns and mutating integer64 to integers
     # select both the feature and target columns (ignorning e.g. entity key)
     columns <- unlist(c(data_conf$featureNames, data_conf$targetNames), use.name = TRUE)
+	print columns 
     data <- table %>% select(all_of(columns)) %>% mutate(
                        YearId = as.integer(YearId),
                        WinterRain = as.integer(WinterRain),
