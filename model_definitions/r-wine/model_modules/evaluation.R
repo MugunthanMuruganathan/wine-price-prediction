@@ -35,6 +35,7 @@ evaluate <- function(data_conf, model_conf, ...) {
   #cm <- confusionMatrix(table(preds, data$HasDiabetes))
   
   #SSE = sum(predicted_price$residuals^2)
+  print ("The SSE value is ")
   SSE = sum((data$Price- predicted_price)^2)
   
   print ("The SSE value is ")
