@@ -48,6 +48,7 @@ evaluate <- function(data_conf, model_conf, ...) {
 
 #  preds$pred <- preds
 #  metrics <- cm$overall
+  metrics <- SSE
 
   write(jsonlite::toJSON(metrics, auto_unbox = TRUE, null = "null", keep_vec_names=TRUE), "artifacts/output/metrics.json")
 }
