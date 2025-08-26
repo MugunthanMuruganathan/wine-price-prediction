@@ -10,7 +10,7 @@ LoadPackages <- function() {
 }
 
 evaluate <- function(data_conf, model_conf, ...) {
-  model <- readRDS("artifacts/input/model.rds")
+  model <- readRDS("artifacts/input/model_wine_lm.rds")
   print("Evaluating model...")
 
   suppressPackageStartupMessages(LoadPackages())
