@@ -28,13 +28,14 @@ train <- function(data_conf, model_conf, ...) {
 	print (" ...... Before getting the data ")
 	
     data <- table %>% select(all_of(columns)) %>% mutate(
-                       YearId = as.integer(YearId),
+                       #YearId = as.integer(YearId),
                        WinterRain = as.integer(WinterRain),
                        AGST = as.integer(AGST),
                        HarvestRain = as.integer(HarvestRain),
 					   Age = as.integer(Age),
 					   FrancePop = as.integer(FrancePop),
 					   Price = as.integer(Price)) %>% as.data.frame()
+
 
 	print (" ...... After getting the data ")
 	
