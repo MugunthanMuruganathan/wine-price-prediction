@@ -51,6 +51,8 @@ score.batch <- function(data_conf, model_conf, model_version, job_id, ...) {
     pred_df$YearId <- data$YearId
     pred_df$job_id <- job_id
 
+	print("Data Frame is created...")
+
     # tdplyr doesn't match column names on append.. and so to match / use same table schema as for byom predict
     # example (see README.md), we must add empty json_report column and change column order manually (v17.0.0.4)
     # CREATE MULTISET TABLE pima_patient_predictions
