@@ -12,8 +12,9 @@ LoadBatchScoringPackages <- function() {
 
 score.restful <- function(model, data, ...) {
     print("Scoring model...")
-    probs <- predict(model, data, na.action = na.pass, type = "response")
-    score <- ifelse(probs > 0.5, 1, 0)
+    #probs <- predict(model, data, na.action = na.pass, type = "response")
+	predicted_price <- predict(model, newdata=data)
+    #score <- ifelse(probs > 0.5, 1, 0)
     score
 }
 
