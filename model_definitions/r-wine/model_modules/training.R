@@ -14,9 +14,9 @@ train <- function(data_conf, model_conf, ...) {
 
     table <- tbl(con, sql(data_conf$sql))
 
-	print data_conf$featureNames 
-	print (" ...... Next parameter ")
-	print data_conf$targetNames 
+	#print data_conf$featureNames 
+	#print (" ...... Next parameter ")
+	#print data_conf$targetNames 
 	
     # Create dataframe from tibble, selecting the necessary columns and mutating integer64 to integers
     # select both the feature and target columns (ignorning e.g. entity key)
