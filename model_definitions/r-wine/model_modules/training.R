@@ -29,7 +29,7 @@ train <- function(data_conf, model_conf, ...) {
     # Load hyperparameters from model configuration
     hyperparams <- model_conf[["hyperParameters"]]
 
-    print("Training model...")
+    print(" Data has been collected. Training model...")
 
     # Train model
     model <- lm(Price~ AGST + WinterRain + HarvestRain + Age,
